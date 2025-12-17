@@ -113,7 +113,16 @@ class _TodoScreenState extends State<TodoScreen> {
                     ),
                   ),
                   onPressed: () {
-                    _addToDoItem(_todoController.text);
+                    if(_todoController.text != '')
+                      _addToDoItem(_todoController.text);
+                    else
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                            content: Text("Write something before adding"),
+                            backgroundColor: Colors.red,
+                            duration: Duration(seconds: 3)
+                        ),
+                      );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Color.fromRGBO(112, 244, 213, 1),
